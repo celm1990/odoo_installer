@@ -41,8 +41,8 @@ services:
       INITIAL_LANG: "{{ odoo_initial_lang }}"
       LETSENCRYPT_HOST: {{ domain }}
       VIRTUAL_HOST: {{ domain }}
-      VIRTUAL_PORT: {{ odoo_port_longpolling }}
-      VIRTUAL_PATH: /longpolling
+      VIRTUAL_PORT: {{ odoo_port_websocket }}
+      VIRTUAL_PATH: /websocket
       MAX_CRON_THREADS: 0
     volumes:
       - filestore:/var/lib/odoo
