@@ -20,6 +20,6 @@ cd $ODOO_PATH_BASE
 copier copy --trust --vcs-ref custom gh:celm1990/doodba-copier-template --overwrite  .
 echo -e "\nIngrese las credenciales para loguearse en el registry de gitlab"
 docker login registry.gitlab.com
-docker-compose -f $ODOO_PATH_BASE/inverseproxy/traefik.yaml up -d
-docker-compose -f $ODOO_PATH_BASE/prod.yaml pull odoo
-docker-compose -f $ODOO_PATH_BASE/prod.yaml up -d
+docker compose -f $ODOO_PATH_BASE/inverseproxy/traefik.yaml up -d
+docker compose -f $ODOO_PATH_BASE/prod.yaml pull odoo
+docker compose -f $ODOO_PATH_BASE/prod.yaml up -d
