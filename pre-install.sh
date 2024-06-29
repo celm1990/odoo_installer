@@ -14,21 +14,21 @@ validate_response() {
     esac
 }
 while true; do
-    read -p "Desea Instalar Docker?(Yes/No): " user_response
+    read -p "Desea Instalar Docker?(y/n): " user_response
     user_response=$(echo "$user_response" | tr '[:upper:]' '[:lower:]') # Convertir la respuesta a minúsculas
     install_docker=$(validate_response "$user_response")
     if [ "$install_docker" = "invalid" ]; then
-        echo "Respuesta invalida, responda (Yes/No)"
+        echo "Respuesta invalida, responda (y/n)"
     else
         break
     fi
 done
 while true; do
-    read -p "Desea Crear un usuario para odoo?(Yes/No): " user_response
+    read -p "Desea Crear un usuario para odoo?(y/n): " user_response
     user_response=$(echo "$user_response" | tr '[:upper:]' '[:lower:]') # Convertir la respuesta a minúsculas
     create_user_odoo=$(validate_response "$user_response")
     if [ "$create_user_odoo" = "invalid" ]; then
-        echo "Respuesta invalida, responda (Yes/No)"
+        echo "Respuesta invalida, responda (y/n)"
     else
         break
     fi

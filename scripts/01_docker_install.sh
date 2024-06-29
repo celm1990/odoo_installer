@@ -14,7 +14,12 @@ echo \
   $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 apt-get update
-apt-get install -y --no-install-recommends docker-ce docker-ce-cli containerd.io docker-compose-plugin
+DOCKER_VERSION=5:26.1.4-1~ubuntu.22.04~jammy
+DOCKER_COMPOSE_VERSION=v2.27.3
+apt-get install -y --no-install-recommends docker-ce=$DOCKER_VERSION docker-ce-cli=$DOCKER_VERSION containerd.io docker-buildx-plugin
+mkdir -p /usr/local/lib/docker/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 systemctl enable docker.service
 systemctl enable containerd.service
