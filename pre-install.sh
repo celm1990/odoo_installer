@@ -33,24 +33,26 @@ while true; do
         break
     fi
 done
+#--------------------------------------------------
+# Install Dependencies
+#--------------------------------------------------
+sudo apt-get update
+echo -e "\n--- Installing Python 3 + pip3 --"
+sudo apt-get install python3-pip build-essential python3-setuptools -y
+sudo -H pip3 install virtualenv
+
 if [ "$install_docker" = "yes" ]; then
     sudo ./scripts/01_docker_install.sh
 fi
 if [ "$create_user_odoo" = "yes" ]; then
     sudo adduser --system --home /opt/odoo --shell /bin/bash --gecos "Odoo" --group odoo
+    sudo cp -r ../odoo_installer /opt/odoo/odoo_installer
+    sudo chown odoo: -R /opt/odoo/odoo_installer
+    echo -e "\n--- Ingrese al usuario odoo y ejecute el archivo ./install.sh --"
+    echo -e "\n sudo su - odoo"
+    echo -e "\n cd /opt/odoo/odoo_installer"
+    echo -e "\n ./install.sh"
+    # asegurarnos que el usuario odoo tenga permisos para ejecutar docker
+    sudo groupadd -f docker
+    sudo usermod -aG docker odoo
 fi
-#--------------------------------------------------
-# Install Dependencies
-#--------------------------------------------------
-echo -e "\n--- Installing Python 3 + pip3 --"
-sudo apt-get install git python3-pip build-essential wget python3-setuptools -y
-sudo -H pip3 install virtualenv
-sudo cp -r ../odoo_installer /opt/odoo/odoo_installer
-sudo chown odoo: -R /opt/odoo/odoo_installer
-echo -e "\n--- Ingrese al usuario odoo y ejecute el archivo ./install.sh --"
-echo -e "\n sudo su - odoo"
-echo -e "\n cd /opt/odoo/odoo_installer"
-echo -e "\n ./install.sh"
-# asegurarnos que el usuario odoo tenga permisos para ejecutar docker
-sudo groupadd -f docker
-sudo usermod -aG docker odoo
