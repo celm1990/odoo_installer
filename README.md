@@ -7,7 +7,7 @@ Instalar Odoo usando docker y doodba desde un repositorio creado con [doodba-cop
 <!-- /!\ do not modify below this line -->
 
 ## REQUISITOS
-- Ubuntu 22.04 LTS
+- Ubuntu 24.04 LTS
 - Git
 - Docker
 - Token de github para poder clonar repositorios privados
@@ -18,7 +18,7 @@ Instalar Odoo usando docker y doodba desde un repositorio creado con [doodba-cop
 
 - Clone este repositorio: 
 ```bash
-git clone https://github.com/celm1990/odoo_installer -b 17.0
+git clone https://github.com/celm1990/odoo_installer -b 18.0
 ```
 - Ingrese a la carpeta `odoo_installer`: 
 ```bash
